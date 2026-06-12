@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search - Truffled</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0d1314;
+            color: white;
+            font-family: 'Inter', sans-serif, system-ui;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: -1;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(74, 158, 255, 0.2);
+            border-top-color: #4a9eff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        p {
+            color: #5d6566;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="loader"></div>
+    <p>Redirecting to proxy...</p>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('q');
+
+        if (query && query.trim()) {
+            const proxyBase = 'https://truffled.lol.cdn.cloudflare.net';
+
+            let searchUrl;
+            if (query.match(/^(https?:\/\/)/i)) {
+                searchUrl = proxyBase + '/service/' + encodeURIComponent(query);
+            } else if (query.match(/^(www\.)/i) || query.match(/^[a-z0-9-]+\.[a-z]{2,}/i)) {
+                searchUrl = proxyBase + '/service/' + encodeURIComponent('https://' + query);
+            } else {
+                searchUrl = proxyBase + '/service/' + encodeURIComponent('https://duckduckgo.com/?q=' + encodeURIComponent(query));
+            }
+
+            window.location.href = searchUrl;
+        } else {
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>

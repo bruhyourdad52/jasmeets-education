@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games - Truffled</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #0d1314;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: rgba(18,25,26,0.8);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 10px 15px;
+            width: 300px;
+        }
+
+        .search-bar input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            font-size: 0.9rem;
+            width: 100%;
+            margin-left: 10px;
+        }
+
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { color: #8e9596; text-decoration: none; font-size: 0.9rem; }
+        .nav-links a:hover { color: white; }
+
+        .main-content { padding: 40px; padding-right: 100px; }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .game-card {
+            background: rgba(18,25,26,0.8);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+            overflow: hidden;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(74,158,255,0.4);
+        }
+
+        .sidebar {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(18,25,26,0.6);
+            padding: 20px 15px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .sidebar i { color: white; font-size: 1.2rem; opacity: 0.8; cursor: pointer; }
+    </style>
+</head>
+
+<body>
+
+<header class="header">
+    <a href="/truf.html" class="logo">
+        <i class="fa-solid fa-gamepad"></i> indian scammer's games (bro)
+    </a>
+
+    <div class="search-bar">
+        <i class="fa-solid fa-search"></i>
+        <input type="text" placeholder="Search games..." id="gameSearch">
+    </div>
+
+    <nav class="nav-links">
+        <a href="/truf.html">Home</a>
+        <a href="/g">Games</a>
+        <a href="https://discord.gg/ZDq3UYskkK">Discord</a>
+    </nav>
+</header>
+
+<main class="main-content">
+
+    <h1 class="section-title">
+        <i class="fa-solid fa-fire"></i> Game Library
+    </h1>
+
+    <div class="games-grid" id="gamesGrid"></div>
+
+</main>
+
+<div class="sidebar">
+    <a href="/truf.html"><i class="fa-solid fa-house"></i></a>
+    <a href="/g"><i class="fa-solid fa-gamepad"></i></a>
+    <i class="fa-solid fa-layer-group"></i>
+    <i class="fa-solid fa-screwdriver-wrench"></i>
+    <a href="https://discord.gg/ZDq3UYskkK"><i class="fa-brands fa-discord"></i></a>
+    <i class="fa-solid fa-gear"></i>
+</div>
+
+<script>
+const games = [
+    { name: "GTA Vice City", image: "logo/gta.png", link: "games/gta.html" },
+    { name: "DOOM", image: "logo/doom.png", link: "games/doom.html" },
+    { name: "DOOM II", image: "logo/doom2.png", link: "games/doom2.html" },
+    { name: "Basket Bros", image: "logo/basketbros.png", link: "games/basketbros.html" },
+    { name: "Gladihoppers", image: "logo/gladihoppers.png", link: "games/gladihoppers" },
+    { name: "A Small World Cup", image: "logo/asmallworldcup.png", link: "games/asmallworldcup.html" },
+    { name: "Ragdoll Archers", image: "logo/ragdollarchers.png", link: "games/ragdollarchers.html" },
+    { name: "Ragdoll Hit", image: "logo/ragdollhit.png", link: "games/ragdollhit.html" },
+    { name: "FNaF World", image: "logo/fnafworld.png", link: "games/fnafworld.html" },
+    { name: "Raft", image: "logo/raft.png", link: "games/raft.html" },
+    { name: "BuildNow", image: "logo/buildnow.png", link: "games/buildnow.html" }
+];
+
+const gamesGrid = document.getElementById("gamesGrid");
+
+function renderGames() {
+    gamesGrid.innerHTML = "";
+    games.forEach(game => {
+        const card = document.createElement("div");
+        card.className = "game-card";
+
+        card.innerHTML = `
+            <div style="
+                width: 100%;
+                aspect-ratio: 1/1;
+                background: url('${game.image}') center/cover no-repeat;
+            "></div>
+            <p style="padding:10px;text-align:center;">${game.name}</p>
+        `;
+
+        card.onclick = () => window.location.href = game.link;
+
+        gamesGrid.appendChild(card);
+    });
+}
+
+renderGames();
+</script>
+
+</body>
+</html>
