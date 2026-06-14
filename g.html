@@ -161,28 +161,45 @@ const games = [
     { name: "Raft", image: "logo/raft.png", link: "games/raft.html" },
     { name: "BuildNow", image: "logo/buildnow.png", link: "games/buildnow.html" },
 
-    // ⭐ NEW GAMES
+    { name: "Rocket League", image: "logo/rocketleague.png", link: "games/rocketleague.html" },
+    { name: "COD Zombies", image: "logo/codzombies.png", link: "games/codzombies.html" },
+    { name: "Snow Rider 3D", image: "logo/snowrider.png", link: "games/snowrider.html" },
+
+    { name: "Need for Speed: Carbon", image: "logo/needforspeedcarbon.png", link: "games/needforspeedcarbon.html" },
+    { name: "Need for Speed: Most Wanted", image: "logo/needforspeedmostwanted.png", link: "games/needforspeedmostwanted.html" },
+    { name: "Need for Speed: Underground", image: "logo/needforspeedunderground.png", link: "games/needforspeedunderground.html" },
+
+    { name: "1v1.lol", image: "logo/1v1lol.png", link: "games/1v1lol.html" },
+
     { name: "Geometry Dash", image: "logo/geometrydash.png", link: "games/geometrydash.html" },
     { name: "Tungsahurobby", image: "logo/tungsahurobby.png", link: "games/tungsahurobby.html" },
     { name: "GunSpin", image: "logo/gunspin.png", link: "games/gunspin.html" },
     { name: "Space Waves", image: "logo/spacewaves.png", link: "games/spacewaves.html" },
+
     { name: "FIFA 11", image: "logo/fifa11.png", link: "games/fifa11.html" },
+    { name: "FIFA 10", image: "logo/fifa10.png", link: "games/fifa10.html" },
+    { name: "FIFA 07", image: "logo/fifa7.png", link: "games/fifa7.html" },
+    { name: "FIFA 99", image: "logo/fifa99.png", link: "games/fifa99.html" },
+
     { name: "Brotato", image: "logo/brotato.png", link: "games/brotato.html" },
     { name: "Fish", image: "logo/fish.png", link: "games/fish.html" },
     { name: "Crazy Cattle 3D", image: "logo/crazycattle3d.png", link: "games/crazycattle3d.html" },
     { name: "Crazy Kitten 3D", image: "logo/crazykitten3d.png", link: "games/crazykitten3d.html" },
     { name: "Crazy Chicken 3D", image: "logo/crazychicken3d.png", link: "games/crazychicken3d.html" },
     { name: "Flip Master", image: "logo/flipmaster.png", link: "games/flipmaster.html" },
+    { name: "Backrooms", image: "logo/backrooms.png", link: "games/backrooms.html" },
 
-    // ⭐ NEWEST GAME — BACKROOMS
-    { name: "Backrooms", image: "logo/backrooms.png", link: "games/backrooms.html" }
+    { name: "The World's Hardest Game", image: "logo/theworldshardestgame.png", link: "games/theworldshardestgame.html" },
+    { name: "The World's Hardest Game 2", image: "logo/theworldshardestgame2.png", link: "games/theworldshardestgame2.html" },
+    { name: "The World's Hardest Game 3", image: "logo/theworldshardestgame3.png", link: "games/theworldshardestgame3.html" },
+    { name: "The World's Hardest Game 4", image: "logo/theworldshardestgame4.png", link: "games/theworldshardestgame4.html" }
 ];
 
 const gamesGrid = document.getElementById("gamesGrid");
 
-function renderGames() {
+function renderGames(list) {
     gamesGrid.innerHTML = "";
-    games.forEach(game => {
+    list.forEach(game => {
         const card = document.createElement("div");
         card.className = "game-card";
 
@@ -201,7 +218,13 @@ function renderGames() {
     });
 }
 
-renderGames();
+renderGames(games);
+
+document.getElementById("gameSearch").addEventListener("input", function () {
+    const q = this.value.toLowerCase();
+    const filtered = games.filter(g => g.name.toLowerCase().includes(q));
+    renderGames(filtered);
+});
 </script>
 
 </body>
