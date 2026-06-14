@@ -9,10 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        /* ============================================================
-           REAL PAGE  (your Truffled search code)
-           ============================================================ */
         body {
             margin: 0;
             background-color: #0d1314;
@@ -124,31 +122,7 @@
             color: #8e9596;
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-                padding: 0 20px;
-                text-align: center;
-            }
-
-            .search-container {
-                padding: 0 20px;
-            }
-
-            .sidebar {
-                right: 10px;
-                padding: 15px 10px;
-                gap: 20px;
-            }
-
-            .sidebar i {
-                font-size: 1rem;
-            }
-        }
-
-        /* ============================================================
-           CLOAK SPLASH  (education decoy that flashes first)
-           ============================================================ */
+        /* CLOAK */
         #cloak {
             position: fixed;
             inset: 0;
@@ -157,7 +131,7 @@
             color: #1b3354;
             font-family: 'Poppins', sans-serif;
             overflow-y: auto;
-            cursor: pointer;
+            cursor: default;
             transition: opacity 0.3s ease;
         }
 
@@ -175,7 +149,6 @@
             color: #ffffff;
             font-weight: 700;
             font-size: 1.2rem;
-            letter-spacing: 0.2px;
         }
 
         .cloak-hero {
@@ -189,14 +162,12 @@
             color: #e9eef3;
             font-weight: 700;
             font-size: 2.5rem;
-            letter-spacing: 0.2px;
         }
 
         .cloak-hero p {
             margin: 0 auto;
             color: #c5d2df;
             font-size: 1.1rem;
-            font-weight: 400;
             max-width: 760px;
         }
 
@@ -206,6 +177,7 @@
             color: #ffffff;
             font-weight: 600;
             font-size: 1.05rem;
+            cursor: pointer;
         }
 
         .cloak-divider {
@@ -223,7 +195,6 @@
             color: #8b939c;
             font-size: 1.6rem;
             line-height: 1.55;
-            margin: 0 0 8px;
         }
 
         .cloak-content h3 {
@@ -237,7 +208,6 @@
             color: #8b939c;
             font-size: 1.5rem;
             line-height: 1.5;
-            margin: 0;
         }
 
         .cloak-foot {
@@ -245,29 +215,16 @@
             font-size: 0.95rem;
             margin-top: 48px;
         }
-
-        @media (max-width: 768px) {
-            .cloak-hero { padding: 38px 18px 42px; }
-            .cloak-hero h2 { font-size: 1.7rem; }
-            .cloak-hero p { font-size: 1rem; }
-            .cloak-content .intro { font-size: 1.2rem; }
-            .cloak-content h3 { font-size: 1.2rem; }
-            .cloak-content p { font-size: 1.15rem; }
-        }
     </style>
 </head>
+
 <body>
 
-    <!-- ===== Your Truffled search page (revealed after a click) ===== -->
     <h1>Welcome to Truffled</h1>
 
     <div class="search-container">
         <form id="searchForm">
-            <input
-                type="text"
-                id="searchInput"
-                class="search-box"
-                placeholder="Search DuckDuckGo or type an URL">
+            <input type="text" id="searchInput" class="search-box" placeholder="Search DuckDuckGo or type an URL">
         </form>
     </div>
 
@@ -288,7 +245,7 @@
         <span>dmca</span>
     </div>
 
-    <!-- ===== Education cloak splash (shown first, click anywhere to continue) ===== -->
+    <!-- CLOAK -->
     <div id="cloak">
         <nav class="cloak-nav">
             <span class="cloak-logo">Truffled</span>
@@ -297,47 +254,48 @@
         <header class="cloak-hero">
             <h2>One secure place for all your learning</h2>
             <p>Connecting students and teachers to the educational resources they need</p>
-            <div class="cloak-cta">Get Started</div>
+            <div class="cloak-cta" id="startBtn">Get Started</div>
         </header>
 
         <div class="cloak-divider"></div>
 
         <main class="cloak-content">
-            <p class="intro">Truffled is a comprehensive education platform trusted by students, teachers, and schools nationwide. Access all your courses, study materials, and learning tools in one secure, easy-to-use platform.</p>
+            <p class="intro">Truffled is a comprehensive education platform trusted by students, teachers, and schools nationwide.</p>
 
             <h3>Academic Subjects</h3>
             <p>Mathematics, Science, English, History, Literature, Writing, Reading, Social Studies, Geography, Biology, Chemistry, Physics, Algebra, Geometry, Calculus, Statistics, Computer Science, Programming, Foreign Languages, Art, Music</p>
 
             <h3>Educational Services</h3>
-            <p>Online courses, college credit, exam preparation, test prep, tutoring, homework help, study guides, practice tests, flashcards, interactive lessons, video tutorials, and personalized learning paths designed for every student.</p>
+            <p>Online courses, college credit, exam preparation, test prep, tutoring, homework help, study guides, practice tests, flashcards, interactive lessons, video tutorials, and personalized learning paths.</p>
 
             <h3>Why Choose Truffled</h3>
-            <p>Truffled brings together everything students and educators need in a single, distraction-free environment built for focus, accessibility, and academic success — keeping learning organized and within reach at all times.</p>
+            <p>Truffled brings together everything students and educators need in a single, distraction-free environment.</p>
 
-            <h3>For Teachers &amp; Schools</h3>
-            <p>Educators can manage classes, share resources, track progress, and connect with students through a streamlined dashboard. Schools nationwide rely on Truffled to deliver consistent, standards-aligned instruction.</p>
+            <h3>For Teachers & Schools</h3>
+            <p>Educators can manage classes, share resources, track progress, and connect with students through a streamlined dashboard.</p>
 
-            <p class="cloak-foot">© 2026 Truffled. All rights reserved. · Privacy · Terms · Contact</p>
+            <p class="cloak-foot">© 2026 Truffled. All rights reserved.</p>
         </main>
     </div>
 
     <script>
-        /* ---- Click anywhere on the cloak to reveal the search page ---- */
+        /* Reveal main page ONLY when clicking "Get Started" */
         (function () {
             const cloak = document.getElementById('cloak');
             const input = document.getElementById('searchInput');
-            function reveal(e) {
-                if (e) e.preventDefault();
+            const startBtn = document.getElementById('startBtn');
+
+            startBtn.addEventListener('click', function () {
                 cloak.classList.add('hide');
+
                 setTimeout(function () {
                     cloak.style.display = 'none';
                     if (input) input.focus();
                 }, 300);
-            }
-            cloak.addEventListener('click', reveal);
+            });
         })();
 
-        /* ---- Your original search logic ---- */
+        /* Search logic */
         document.getElementById('searchForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const query = document.getElementById('searchInput').value.trim();
